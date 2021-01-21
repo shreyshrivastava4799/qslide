@@ -65,45 +65,15 @@ if __name__ == "__main__":
         q_words = str(input()).split() 
 
         search_result = searcher.simpleIntersection(q_words)
+        if search_result == None:
+            print(f'No results found.')
+            continue
         for s_no, pg_no in search_result:
             with open(f_path+'/'+filename_list[s_no], "rb") as f:
                 pdf = pdftotext.PDF(f)
+            print(f'\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n')
+            print(f'Results from slide: {filename_list[s_no]} and page no. {pg_no}\n')
             print(pdf[pg_no])
 
 
-    # # create  Tree for forward and reverse word vocabulary
-    # # vocabulary and reverse vocabulary
-    # vocab = list(InvPosIdx.keys())
-    # rev_vocab = [word[::-1] for word in vocab]
 
-    # forward_root = Node('*')
-    # reverse_root = Node('*')
-
-    # # create B-tree
-    # for word in vocab:
-    #     add(forward_root, word)
-
-    # for word in rev_vocab:
-    #     add(reverse_root, word)
-
-
-
-
-
-# # Load your PDF
-#             with open(f_path+'/'+filename, "rb") as f:
-#                 pdf = pdftotext.PDF(f)
-
-#             # # How many pages?
-#             # print(len(pdf))
-
-#             # # Iterate over all the pages
-#             # for page in pdf:
-#             #     print(page)
-
-#             # Read some individual pages
-#             # print(pdf[0])
-#             word = "Partha"
-#             if word in pdf[0]:
-#                 print(f'Found the query word {word} in \n{pdf[0]}')
-#             # print(pdf[1])
